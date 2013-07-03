@@ -1,0 +1,298 @@
+/* http://meyerweb.com/eric/tools/css/reset/ 
+   v2.0 | 20110126
+   License: none (public domain)
+*/
+
+html, body, div, span, applet, object, iframe,
+h1, h2, h3, h4, h5, h6, p, blockquote, pre,
+a, abbr, acronym, address, big, cite, code,
+del, dfn, em, img, ins, kbd, q, s, samp,
+small, strike, strong, sub, sup, tt, var,
+b, u, i, center,
+dl, dt, dd, ol, ul, li,
+fieldset, form, label, legend,
+table, caption, tbody, tfoot, thead, tr, th, td,
+article, aside, canvas, details, embed, 
+figure, figcaption, footer, header, hgroup, 
+menu, nav, output, ruby, section, summary,
+time, mark, audio, video {
+	margin: 0;
+	padding: 0;
+	border: 0;
+	font-size: 100%;
+	font: inherit;
+	vertical-align: baseline;
+}
+/* HTML5 display-role reset for older browsers */
+article, aside, details, figcaption, figure, 
+footer, header, hgroup, menu, nav, section {
+	display: block;
+}
+body {
+	line-height: 1;
+}
+ol, ul {
+	list-style: none;
+}
+blockquote, q {
+	quotes: none;
+}
+blockquote:before, blockquote:after,
+q:before, q:after {
+	content: '';
+	content: none;
+}
+table {
+	border-collapse: collapse;
+	border-spacing: 0;
+}
+
+/* --- MY CSS --- */
+
+/* Icon font */
+@font-face {
+    font-family: 'Entypo';
+    src: url('fonts/entypo.eot');
+    src: local('Entypo'), 
+         url('fonts/entypo.ttf') format('truetype'),
+         url('fonts/entypo.svg#font') format('svg'); 
+}
+
+@font-face {
+    font-family: 'Source Sans Pro';
+    src: url('fonts/SourceSansPro-Regular-webfont.eot');
+    src: local('Source Sans Pro'), 
+         local('Source Sans Pro Regular'), 
+         url('fonts/SourceSansPro-Regular-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Regular-webfont.svg#font') format('svg'); 
+}
+
+@font-face {
+    font-family: 'Source Sans Pro Bold';
+    src: url('fonts/SourceSansPro-Bold-webfont.eot');
+    src: local('Source Sans Pro'), 
+         local('Source Sans Pro Bold'),
+         url('fonts/SourceSansPro-Bold-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Bold-webfont.svg#font') format('svg'); 
+    font-weight: bold;
+}
+
+@font-face {
+    font-family: 'Colaborate';
+    src: url('fonts/ColabReg-webfont.eot');
+    src: local('Colaborate'), 
+         local('Colaborate Regular'),
+         url('fonts/ColabReg-webfont.ttf') format('truetype'),
+         url('fonts/ColabReg-webfont.svg#font') format('svg'); 
+}
+
+/* red color: #00FF99 */
+
+/* GENERAL */
+
+body{
+	font-family: Source Sans Pro;
+	font-size: 0.9em;
+}
+
+h1{
+	text-transform: uppercase;
+	text-align: center;
+}
+
+h2{
+	font-family: Source Sans Pro Bold;
+}
+
+p{
+	margin-top: 20px;
+}
+
+.icon{
+	font-family: Entypo;
+	font-size: 50px;
+}
+
+/* CONTENT */
+
+#content ul{
+	margin-top: 20px;
+}
+
+#container{
+	margin: auto;
+	width: 300px;
+}
+
+#header{
+
+}
+
+#header div#logo{
+	margin: 30px auto 30px auto;
+	background-image: url('images/logo.jpg');
+	height: 150px;
+	width: 150px;
+	background-position: center center;
+	background-size: 300px 300px;
+	font-size: 0px;
+	border-bottom: 1px #C8C8C8 solid;
+}
+
+#header ul#nav{
+	text-align: center;
+}
+
+#header ul#nav li{
+	display: inline-block;
+}
+
+#header ul#nav li a:link{
+	display: block;
+	height: 50px;
+	line-height: 25px;
+	text-align: center;
+	width: 50px;
+	padding: 10px;
+	text-decoration: none;
+	font-family: Entypo;
+	font-size: 50px;
+	color: #C8C8C8;
+}
+
+#header ul#nav li a:visited{
+	color: #C8C8C8;
+}
+
+#header ul#nav li a:hover{
+	color: #B197A0;
+}
+
+#content{
+
+}
+
+#footer{
+	clear: both;
+	margin-bottom: 30px;
+}
+
+/* HOME */
+
+#content div#portfolio a img{
+	width: 147px;
+	margin-bottom: 6px;
+}
+
+#content div#portfolio a:nth-child(odd){
+	float: left;
+}
+
+#content div#portfolio a:nth-child(even){
+	float: right;
+}
+
+/* PROJECT DETAILS */
+
+#content img#detailsImg{
+	width: 147px;
+	float: left;
+}
+
+#content div#detailsContent{
+	width: 147px;
+	float: right;
+}
+
+/* ABOUT */
+
+#content ul li{
+	float: left;
+	width: 50%;
+}
+
+/* FORMS */
+
+#content form{
+	margin: auto;
+	width: 200px;
+	margin-top: 20px;
+}
+
+#content label{
+	float: left;
+}
+
+#content form span.error{
+	float: right;
+	color: red;
+}
+
+#content input, #content textarea{
+	display: block;
+	width: 198px;
+	margin-bottom: 30px;
+	height: 20px;
+}
+
+#content textarea{
+	max-width: 199px;
+	min-width: 199px;
+	height: 100px;
+}
+
+#content input[type="submit"]{
+	background-color: #B197A0;
+	border: none;
+	height: 50px;
+	width: 200px;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: Source Sans Pro Bold;
+}
+
+/* CART */
+
+#content div#cart{
+	border-top: 2px grey solid;
+	border-bottom: 2px grey solid;
+	margin-top: 20px;
+}
+
+#content div#cart div{
+	height: 30px;
+	line-height: 30px;
+}
+
+#content div#cart div.cartProduct span{
+	float: left;
+}
+
+#content div#cart .productName{
+	width: 100px;
+}
+
+#content div#cart .productQty{
+	width: 25px;
+}
+
+#content div#cart .productRemove{
+	line-height: 0px;
+	color: red;
+}
+
+#content div#cart .productPrice{
+	float: right !important;
+}
+
+#content div#cart div.cartOtherRow{
+	border-top: 1px grey solid;
+}
+
+#content div#cart .productPrice#total{
+	font-family: Source Sans Pro Bold;
+}
+
+#content form input#purchase{
+	width: 100px;
+}
