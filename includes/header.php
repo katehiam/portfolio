@@ -3,6 +3,7 @@
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<script type="text/javascript" src="assets/javascript.js"></script>
 	<title>Kate Hiam - Graphic and Web Designer</title>
 	</head>
 

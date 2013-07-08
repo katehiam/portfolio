@@ -54,7 +54,7 @@ table {
     font-family: 'Entypo';
     src: url('fonts/entypo.eot');
     src: local('Entypo'), 
-         url('fonts/entypo.ttf') format('truetype'),
+         url('font	s/entypo.ttf') format('truetype'),
          url('fonts/entypo.svg#font') format('svg'); 
 }
 
@@ -86,13 +86,24 @@ table {
          url('fonts/ColabReg-webfont.svg#font') format('svg'); 
 }
 
-/* red color: #00FF99 */
+/*
+----------
+COLOURS:
+
+light pink: #baa3ab
+dark pink: ??
+light grey: ??
+dark grey: #6a737b
+red: #b14D43
+----------
+*/
 
 /* GENERAL */
 
 body{
 	font-family: Source Sans Pro;
 	font-size: 0.9em;
+	color: #6a737b;
 }
 
 h1{
@@ -106,6 +117,18 @@ h2{
 
 p{
 	margin-top: 20px;
+}
+
+a:link{
+	color: #6a737b;
+}
+
+a:visited{
+	color: #6a737b;
+}
+
+a:hover{
+	color: #c8c8c8;
 }
 
 .icon{
@@ -129,7 +152,7 @@ p{
 }
 
 #header div#logo{
-	margin: 30px auto 30px auto;
+	margin: 30px auto 10px auto;
 	background-image: url('images/logo.jpg');
 	height: 150px;
 	width: 150px;
@@ -141,6 +164,7 @@ p{
 
 #header ul#nav{
 	text-align: center;
+	margin-bottom: 10px;
 }
 
 #header ul#nav li{
@@ -181,15 +205,41 @@ p{
 
 #content div#portfolio a img{
 	width: 147px;
-	margin-bottom: 6px;
+	margin-bottom: 3px;
 }
 
-#content div#portfolio a:nth-child(odd){
+#content div#portfolio div:nth-child(odd){
 	float: left;
 }
 
-#content div#portfolio a:nth-child(even){
+#content div#portfolio div:nth-child(even){
 	float: right;
+}
+
+/* hover images */
+
+#content div#portfolio div.hoverImg{
+	width: 147px;
+}
+
+#content .hoverImg{
+	position: absolute;
+	background-color: #fff;
+	opacity: 0.5;
+	display: none;
+}
+
+#content div#portfolio div:hover .hoverImg{
+	display: block;
+}
+
+#content div#hoverImg{
+	position: absolute;
+	width: 147px;
+	height: 200px;
+	background-color: #ccc;
+	opacity: 0.5;
+	/* display: none; */
 }
 
 /* PROJECT DETAILS */
@@ -209,7 +259,162 @@ p{
 #content ul li{
 	float: left;
 	width: 50%;
+	height: 30px;
 }
+
+#content ul li span.icon{
+	display: inline-block;
+	width: 30px;
+	height: 30px;
+	line-height: 10px;
+	overflow: hidden;
+}
+
+/* skills */
+
+#content h1.skills{
+	padding-top: 40px;
+	clear: both;
+}
+
+#content img.skills{
+	display: block;
+	margin: auto;
+	width: 110px;
+	height: 110px;
+}
+
+#content div.skills{
+	position: relative;
+	top: 0px;
+	margin: 100px 0px;
+}
+
+#content div.skills#printsoftware{
+	margin-top: 30px; /* change top margin */
+}
+
+#content div.skills h1{
+	position: absolute;
+	top: 40px;
+	left: 50%;
+	margin-left: -40px;
+	text-align: center;
+	display: block;
+	width: 80px;
+}
+
+/* --- print software --- */
+
+#content div#printsoftware #psd{
+	position: absolute;
+	left: 50%;
+	top: 25px;
+	margin-left: 60px;
+}
+
+#content div#printsoftware #ai{
+	position: absolute;
+	left: 50%;
+	top: 112px;
+	margin-left: -60px;
+}
+
+#content div#printsoftware #ind{
+	position: absolute;
+	left: 50%;
+	top: 20px;
+	margin-left: -110px;
+}
+
+/* --- print skills --- */
+
+#content div#printskills #design{
+	position: absolute;
+	left: 50%;
+	top: 20px;
+	margin-left: 55px;
+}
+
+#content div#printskills #illustration{
+	position: absolute;
+	left: 50%;
+	top: 90px;
+	margin-left: 50px;
+}
+
+#content div#printskills #packaging{
+	position: absolute;
+	left: 50%;
+	top: 85px;
+	margin-left: -115px;
+}
+
+#content div#printskills #typography{
+	position: absolute;
+	left: 50%;
+	top: 50px;
+	margin-left: -132px;
+}
+
+#content div#printskills #photography{
+	position: absolute;
+	left: 50%;
+	top: 25px;
+	margin-left: -133px;
+}
+
+#content div#printskills #photomanipulation{
+	position: absolute;
+	left: 50%;
+	top: -15px;
+	margin-left: -130px;
+}
+
+/* --- web --- */
+
+#content div#web #html{
+	position: absolute;
+	left: 50%;
+	top: 15px;
+	margin-left: 50px;
+}
+
+#content div#web #css{
+	position: absolute;
+	left: 50%;
+	top: 80px;
+	margin-left: 50px;
+}
+
+#content div#web #js{
+	position: absolute;
+	left: 50%;
+	top: 100px;
+	margin-left: -100px;
+}
+
+#content div#web #php{
+	position: absolute;
+	left: 50%;
+	top: 50px;
+	margin-left: -85px;
+}
+
+#content div#web #sql{
+	position: absolute;
+	left: 50%;
+	top: 10px;
+	margin-left: -70px;
+}
+
+#content div#web #as{
+	position: absolute;
+	left: 50%;
+	top: -15px;
+	margin-left: -70px;
+}
+
 
 /* FORMS */
 
@@ -249,13 +454,15 @@ p{
 	text-transform: uppercase;
 	color: #fff;
 	font-family: Source Sans Pro Bold;
+	cursor: hand;
+	cursor: pointer;
 }
 
 /* CART */
 
 #content div#cart{
-	border-top: 2px grey solid;
-	border-bottom: 2px grey solid;
+	border-top: 2px #6a737b solid;
+	border-bottom: 2px #6a737b solid;
 	margin-top: 20px;
 }
 
@@ -278,7 +485,15 @@ p{
 
 #content div#cart .productRemove{
 	line-height: 0px;
+}
+
+#content div#cart div.cartProduct span.productRemove a{
+	height: 30px;
+	display: inline-block;
+	text-decoration: none;
+	margin-top: 0px;
 	color: red;
+	overflow: hidden; /* overflow: hidden to hide anything outside the box */
 }
 
 #content div#cart .productPrice{
@@ -286,13 +501,53 @@ p{
 }
 
 #content div#cart div.cartOtherRow{
-	border-top: 1px grey solid;
+	border-top: 1px #6a737b solid;
 }
 
 #content div#cart .productPrice#total{
 	font-family: Source Sans Pro Bold;
 }
 
-#content form input#purchase{
+#content form#purchase{
 	width: 100px;
+	float: right;
+}
+
+#content form#purchase input[type="submit"]{
+	width: 100px;
+	margin-bottom: 0px;
+}
+
+#content div#postalAddress{
+	margin-top: 20px;
+	float: left;
+}
+
+#content div.accountFunctions{
+	clear: right;
+	width: 100px;
+	float: right;
+}
+
+#content a.accountFunctions{
+	float: left;
+	width: 48px;
+	text-align: center;
+	background-color: #C8C8C8;
+	color: #fff;
+	text-decoration: none;
+	height: 50px;
+	line-height: 25px;
+	margin-top: 4px;
+	overflow: auto;
+}
+
+#content a.accountFunctions:first-child{
+	margin-right: 4px;
+}
+
+/* LOGIN REGISTER */
+
+p#loginregister{
+	text-align: center;
 }

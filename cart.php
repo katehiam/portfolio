@@ -30,18 +30,20 @@ require_once("includes/header.php");
 
 </div>
 
-<form><fieldset><input type="submit" value="Purchase" id="purchase" /></fieldset></form>
-
 <div id="postalAddress">
 	<h2>Postal Address</h2>
 	<p>Tony Higgens<br />
 	12 Watercress Rd<br />
 	Remuera<br />
 	Auckland 1345</p>
-	<a href="editdetails.php">Edit Details</a>
 </div>
 
-<a href="#">Logout</a>
+<form id="purchase"><fieldset><input type="submit" value="Purchase" /></fieldset></form>
+
+<div class="accountFunctions">
+	<a href="editdetails.php" class="accountFunctions icon" alt="Edit Details">&#9998;</a>
+	<a href="login.php" class="accountFunctions icon" alt="Logout">&#59201;</a>
+</div>
 
 <?php
 require_once("includes/footer.php");

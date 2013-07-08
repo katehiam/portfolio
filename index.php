@@ -3,13 +3,59 @@ require_once("includes/header.php");
 ?>
 
 <div id="portfolio">
-	<a href="projectdetails.php"><img src="assets/images/huskypuppies.jpg" /></a>
-	<a href="projectdetails.php"><img src="assets/images/huskypuppies.jpg" /></a>
-	<a href="projectdetails.php"><img src="assets/images/huskypuppies.jpg" /></a>
-	<a href="projectdetails.php"><img src="assets/images/huskypuppies.jpg" /></a>
-	<a href="projectdetails.php"><img src="assets/images/huskypuppies.jpg" /></a>
-	<a href="projectdetails.php"><img src="assets/images/huskypuppies.jpg" /></a>
+	<div>
+		<a href="projectdetails.php">
+			<img src="assets/images/huskypuppies.jpg" />
+		</a>
+		<div class="hoverImg">
+			<h2>Husky Puppies Artwork</h2>
+			<p>Blah blah</h2>
+		</div>
+	</div>
+
+	<div>
+		<a href="projectdetails.php">
+			<img src="assets/images/huskypuppies.jpg" />
+		</a>
+		<div class="hoverImg">
+			<h2>Puppies</h2>
+			<p>Blah blah</h2>
+		</div>
+	</div>
+
+	<div>
+		<a href="projectdetails.php">
+			<img src="assets/images/huskypuppies.jpg" />
+		</a>
+		<div class="hoverImg">
+			<h2>Puppies</h2>
+			<p>Blah blah</h2>
+		</div>
+	</div>
+
+	<div>
+		<a href="projectdetails.php">
+			<img src="assets/images/huskypuppies.jpg" />
+		</a>
+		<div class="hoverImg">
+			<h2>Puppies</h2>
+			<p>Blah blah</h2>
+		</div>
+	</div>
+
 </div>
+
+<!--
+<div id="hoverImg">
+	<ul>
+		<li><h2>Husky Puppies Artwork</h2><p>blah blah</p></li>
+		<li><h2>Husky Puppies Artwork</h2><p>blah blah</p></li>
+		<li><h2>Husky Puppies Artwork</h2><p>blah blah</p></li>
+		<li><h2>Husky Puppies Artwork</h2><p>blah blah</p></li>
+		<li><h2>Husky Puppies Artwork</h2><p>blah blah</p></li>
+		<li><h2>Husky Puppies Artwork</h2><p>blah blah</p></li>
+	</ul>
+</div> -->
 
 <?php
 require_once("includes/footer.php");
