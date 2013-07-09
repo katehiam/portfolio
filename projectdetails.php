@@ -1,7 +1,21 @@
 <?php
 require_once("includes/header.php");
+require_once("includes/project.php");
+
+$iCurrentProjectId = 1;
+
+if(isset($_GET['projectId'])){
+	$iCurrentProjectId = $_GET['projectId'];
+}
+
+$oCurrentProject = new Project();
+$oCurrentProject->load($iCurrentProjectId);
+
+echo View::renderProjectDetails($oCurrentProject);
+
 ?>
 
+<!--
 <img src="assets/images/huskypuppies.jpg" id="detailsImg">
 <div id="detailsContent">
 	<h2>Husky Puppies Artwork</h2>
@@ -11,6 +25,7 @@ require_once("includes/header.php");
 		<a href="cart.php">&#10133;&#59197;</a>
 	</span>
 </div>
+-->
 
 <?php
 require_once("includes/footer.php");

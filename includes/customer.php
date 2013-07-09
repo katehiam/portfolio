@@ -40,6 +40,26 @@ class Customer{
 		$oDatabase->close();
 	}
 
+	public function loadByEmail($sEmail){
+		$oDatabase = new Database();
+
+		$sSQL = "SELECT id, email
+				FROM tbcustomer
+				WHERE email = '".$sEmail."'";
+		$bResult = $oDatabase->query($sSQL);
+		$aArray = $oDatabase->fetch_array($bResult);
+
+		$oDatabase->close();
+
+		if($aArray == false){
+			return false;
+		}else{
+			$this->load($aArray['id']);
+			return true;
+		}
+
+	}
+
 	public function save(){
 		$oDatabase = new Database();
 

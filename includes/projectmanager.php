@@ -4,7 +4,7 @@ require_once('project.php');
 
 class ProjectManager{
 
-	public function getAll(){
+	static public function getProjects(){
 		$oDatabase = new Database();
 		$sSQL = 'SELECT id FROM tbproject';
 		$oResult = $oDatabase->query($sSQL);
@@ -16,6 +16,7 @@ class ProjectManager{
 		}
 
 		$oDatabase->close();
+
 		return $aProjects;
 	}
 
@@ -23,11 +24,11 @@ class ProjectManager{
 
 // --- TESTING --- //
 
-// testing getAll()
+// testing getProjects()
 /*
 $oPM = new ProjectManager();
 echo "<pre>";
-print_r($oPM->getAll());
+print_r($oPM->getProjects());
 echo "</pre>";
 */
 

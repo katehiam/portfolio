@@ -1,7 +1,11 @@
 <?php
 require_once("includes/header.php");
+require_once("includes/projectmanager.php");
+
+echo View::renderProjects(ProjectManager::getProjects());
 ?>
 
+<!--
 <div id="portfolio">
 	<div>
 		<a href="projectdetails.php">
@@ -44,6 +48,7 @@ require_once("includes/header.php");
 	</div>
 
 </div>
+-->
 
 <!--
 <div id="hoverImg">

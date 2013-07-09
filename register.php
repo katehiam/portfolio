@@ -1,8 +1,61 @@
 <?php
 require_once("includes/header.php");
+require_once("includes/form.php");
+require_once("includes/customer.php");
+require_once("includes/hasher.php");
+
+$oForm = new Form();
+
+if(isset($_POST['submit'])){
+	$oForm->data = $_POST;
+
+	$oForm->checkEmail('email');
+	$oForm->checkName('firstName');
+	$oForm->checkName('lastName');
+	$oForm->checkRequired('address');
+	$oForm->checkRequired('password');
+	$oForm->checkConfirmPassword('password','confirmPassword');
+
+	// check email is unique
+	$oTempCustomer = new Customer(); // create a temporary customer that has that email, checks against
+	$bEmailExists = $oTempCustomer->loadByEmail($_POST["email"]); // customer exists = true, customer doesnt = false
+	if($bEmailExists == true){ // if customer exists 
+		$oForm->raiseCustomErrors("email","Already taken"); // raise an error for that control
+	}else{ // if email is free to use
+		
+		if($oForm->valid == true){
+			$oCustomer = new Customer();
+
+			$oCustomer->email = $_POST['email'];
+			$oCustomer->firstName = $_POST['firstName'];
+			$oCustomer->lastName = $_POST['lastName'];
+			$oCustomer->address = $_POST['address'];
+			$oCustomer->password = Encrypt::encode($_POST['password']);
+
+			$oCustomer->save();
+
+			// redirect
+			header("Location:login.php"); // tweak the output_buffering in php.ini
+			exit;
+
+		}
+	}
+
+}
+
+$oForm->makeInput('email','Email');
+$oForm->makeInput('firstName','First Name');
+$oForm->makeInput('lastName','Last Name');
+$oForm->makeTextArea('address','Address');
+$oForm->makePasswordInput('password','Password');
+$oForm->makeConfirmPasswordInput('confirmPassword','Confirm Password');
+$oForm->makeSubmit('submit','Register');
+
 ?>
 
 <h1>Register</h1>
+
+<!--
 <form id="register">
 	<fieldset>
 		<label>Email</label><span class="error"></span>
@@ -21,6 +74,13 @@ require_once("includes/header.php");
 	</fieldset>
 	<p id="loginregister"><a href="login.php">Already have an account? Login</a></p>
 </form>
+-->
+
+<?php
+echo $oForm->html;
+?>
+
+<p id="loginregister"><a href="login.php">Already have an account? Login</a></p>
 
 <?php
 require_once("includes/footer.php");
