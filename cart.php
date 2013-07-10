@@ -1,49 +1,29 @@
 <?php
 require_once("includes/header.php");
+require_once("includes/customer.php");
+require_once("includes/form.php");
+require_once("includes/project.php");
+
+$oCustomer = new Customer;
+$oCustomer->load($_SESSION['currentUser']);
+
+$oForm = new Form('purchase');
+$oForm->makeSubmit('submit','Purchase');
 ?>
 
 <h1>Cart</h1>
-<div id="cart">
-	<div class="cartProduct">
-		<span class="productName">Item 1</span>
-		<span class="productQty">x1</span>
-		<span class="productRemove icon"><a href="#">&#9003;</a></span>
-		<span class="productPrice">$49.99</span>
-	</div>
 
-	<div class="cartProduct">
-		<span class="productName">Item 2</span>
-		<span class="productQty">x1</span>
-		<span class="productRemove icon"><a href="#">&#9003;</a></span>
-		<span class="productPrice">$13.99</span>
-	</div>
-
-	<div class="cartOtherRow">
-		<span class="productName">Shipping</span>
-		<span class="productPrice">$3.49</span>
-	</div>
-
-	<div class="cartOtherRow">
-		<span class="productName">Total</span>
-		<span class="productPrice" id="total">$47.47</span>
-	</div>
-
-</div>
-
-<div id="postalAddress">
-	<h2>Postal Address</h2>
-	<p>Tony Higgens<br />
-	12 Watercress Rd<br />
-	Remuera<br />
-	Auckland 1345</p>
-</div>
-
-<form id="purchase"><fieldset><input type="submit" value="Purchase" /></fieldset></form>
+<?php
+echo View::renderCartOrderList($_SESSION['cart']);
+echo View::renderCartAddress($oCustomer);
+echo $oForm->html;
+?>
 
 <div class="accountFunctions">
 	<a href="editdetails.php" class="accountFunctions icon" alt="Edit Details">&#9998;</a>
-	<a href="login.php" class="accountFunctions icon" alt="Logout">&#59201;</a>
+	<a href="logout.php" class="accountFunctions icon" alt="Logout">&#59201;</a>
 </div>
+
 
 <?php
 require_once("includes/footer.php");

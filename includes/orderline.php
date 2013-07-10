@@ -22,9 +22,9 @@ class OrderLine{
 
 		//insert
 		$sSQL = "INSERT INTO tborderline (orderId, projectId, quantity)
-				VALUES ('".$this->iOrderId."',
-						'".$this->iProjectId."',
-						'".$this->iQuantity."')";
+				VALUES ('".$oDatabase->escape_value($this->iOrderId)."',
+						'".$oDatabase->escape_value($this->iProjectId)."',
+						'".$oDatabase->escape_value($this->iQuantity)."')";
 
 		$bResult = $oDatabase->query($sSQL);
 

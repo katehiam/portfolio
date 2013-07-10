@@ -10,6 +10,7 @@ class Customer{
 	private $sEmail;
 	private $sAddress;
 	private $sPassword;
+	private $iAdmin;
 
 	public function __construct(){
 		$this->iCustomerId = 0;
@@ -23,9 +24,9 @@ class Customer{
 	public function load($iCustomerId){
 		$oDatabase = new Database();
 
-		$sSQL = "SELECT id, firstName, lastName, email, address, password
+		$sSQL = "SELECT id, firstName, lastName, email, address, password, admin
 				FROM tbcustomer
-				WHERE id = ".$iCustomerId;
+				WHERE id = ".$oDatabase->escape_value($iCustomerId);
 
 		$oResult = $oDatabase->query($sSQL);
 		$aCustomer = $oDatabase->fetch_array($oResult);
@@ -36,6 +37,7 @@ class Customer{
 		$this->sEmail = $aCustomer['email'];
 		$this->sAddress = $aCustomer['address'];
 		$this->sPassword = $aCustomer['password'];
+		$this->iAdmin = $aCustomer['admin'];
 
 		$oDatabase->close();
 	}
@@ -45,7 +47,7 @@ class Customer{
 
 		$sSQL = "SELECT id, email
 				FROM tbcustomer
-				WHERE email = '".$sEmail."'";
+				WHERE email = '".$oDatabase->escape_value($sEmail)."'";
 		$bResult = $oDatabase->query($sSQL);
 		$aArray = $oDatabase->fetch_array($bResult);
 
@@ -66,11 +68,11 @@ class Customer{
 		if($this->iCustomerId == 0){
 			// insert
 			$sSQL = "INSERT INTO tbcustomer (firstName, lastName, email, address, password)
-					VALUES ('".$this->sFirstName."',
-							'".$this->sLastName."',
-							'".$this->sEmail."',
-							'".$this->sAddress."',
-							'".$this->sPassword."')";
+					VALUES ('".$oDatabase->escape_value($this->sFirstName)."',
+							'".$oDatabase->escape_value($this->sLastName)."',
+							'".$oDatabase->escape_value($this->sEmail)."',
+							'".$oDatabase->escape_value($this->sAddress)."',
+							'".$oDatabase->escape_value($this->sPassword)."')";
 
 			$bResult = $oDatabase->query($sSQL);
 			if($bResult==true){ // if it was inserted with no errors
@@ -82,10 +84,10 @@ class Customer{
 		}else{
 			// update
 			$sSQL = "UPDATE tbcustomer
-					SET firstName = '".$this->sFirstName."',
-					lastName = '".$this->sLastName."',
-					address = '".$this->sAddress."'
-					WHERE id = ".$this->iCustomerId;
+					SET firstName = '".$oDatabase->escape_value($this->sFirstName)."',
+					lastName = '".$oDatabase->escape_value($this->sLastName)."',
+					address = '".$oDatabase->escape_value($this->sAddress)."'
+					WHERE id = ".$oDatabase->escape_value($this->iCustomerId);
 
 			$bResult = $oDatabase->query($sSQL);
 			if($bResult==false){ // if errors occurred
@@ -115,6 +117,13 @@ class Customer{
 				break;
 			case 'password':
 				return $this->sPassword;
+				break;
+			case 'admin':
+				if($this->iAdmin == 0){
+					return false; // if not admin, return false
+				}else{
+					return true; // if admin, return true
+				}
 				break;
 			default:
 				die($sProperty." is not allowed to be read from");

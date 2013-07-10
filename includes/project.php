@@ -28,7 +28,7 @@ class Project{
 
 		$sSQL = 'SELECT id, name, date, description, image, product, price
 					FROM tbproject
-					WHERE id = '.$iProjectId;
+					WHERE id = '.$oDatabase->escape_value($iProjectId);
 
 		$oResult = $oDatabase->query($sSQL);
 		$aProject = $oDatabase->fetch_array($oResult);
@@ -53,12 +53,12 @@ class Project{
 		if($this->iProjectId == 0){
 			//insert
 			$sSQL = "INSERT INTO tbproject (name, date, description, image, product, price)
-					VALUES ('".$this->sName."',
-							'".$this->dDate."',
-							'".$this->sDesc."',
-							'".$this->sImage."',
-							'".$this->iProduct."',
-							'".$this->iPrice."')";
+					VALUES ('".$oDatabase->escape_value($this->sName)."',
+							'".$oDatabase->escape_value($this->dDate)."',
+							'".$oDatabase->escape_value($this->sDesc)."',
+							'".$oDatabase->escape_value($this->sImage)."',
+							'".$oDatabase->escape_value($this->iProduct)."',
+							'".$oDatabase->escape_value($this->iPrice)."')";
 
 			$bResult = $oDatabase->query($sSQL);
 
@@ -71,12 +71,12 @@ class Project{
 		}else{
 			// update (don't update date)
 			$sSQL = "UPDATE tbproject
-					SET name='".$this->sName."',
-					description='".$this->sDesc."',
-					image='".$this->sImage."',
-					product='".$this->iProduct."',
-					price='".$this->iPrice."'
-					WHERE id=".$this->iProjectId;
+					SET name='".$oDatabase->escape_value($this->sName)."',
+					description='".$oDatabase->escape_value($this->sDesc)."',
+					image='".$oDatabase->escape_value($this->sImage)."',
+					product='".$oDatabase->escape_value($this->iProduct)."',
+					price='".$oDatabase->escape_value($this->iPrice)."'
+					WHERE id=".$oDatabase->escape_value($this->iProjectId);
 
 			$bResult = $oDatabase->query($sSQL);
 

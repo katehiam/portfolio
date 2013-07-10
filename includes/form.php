@@ -6,8 +6,8 @@ class Form{
 	private $aErrors;
 	private $aFiles;
 
-	public function __construct(){
-		$this->sHTML = '<form enctype="multipart/form-data" action="" method="post"><fieldset>';
+	public function __construct($id=""){
+		$this->sHTML = '<form id="'.$id.'" enctype="multipart/form-data" action="" method="post"><fieldset>';
 		$this->aData = array();
 		$this->aErrors = array();
 		$this->aFiles = array();
@@ -28,7 +28,7 @@ class Form{
 		}
 
 		$this->sHTML .= '<label for="'.$sControlName.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
-		<input type="text" name="'.$sControlName.'" value="'.$sData.'" /';
+		<input type="text" name="'.$sControlName.'" value="'.$sData.'" />';
 	}
 
 	public function makePasswordInput($sControlName,$sLabel){
@@ -103,6 +103,18 @@ class Form{
 				$this->sHTML .= '<span class="radio"><input type="radio" name="'.$sControlName.'" value="'.$key.'" />'.$value.'</span>';
 			}
 		}
+
+	}
+
+	public function makeCheck($sControlName,$sLabel,$sValue){
+
+		$sData = "";
+		// if data exists, put it into sData and use it for the value
+		if(isset($this->aData[$sControlName])){
+			$sData = trim($this->aData[$sControlName]);
+		}
+
+		$this->sHTML .= '<div class="check">'.$sLabel.'<input type="checkbox" name="'.$sControlName.'" value="'.$sValue.'" /></div>';
 
 	}
 
@@ -279,10 +291,9 @@ class Form{
 			$sErrors = $this->aErrors[$sControlName];
 		}
 
-		$this->sHTML .= '<label for"'.$sLabel.'">'.$sLabel.'</label>
+		$this->sHTML .= '<label for"'.$sLabel.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
 		<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
-			<input name="'.$sControlName.'" type="file" />
-			<div class="error">'.$sErrors.'</div>';
+			<input name="'.$sControlName.'" type="file" />';
 	}
 
 	public function checkImageUpload($sControlName){
@@ -298,10 +309,10 @@ class Form{
 			($aFile["size"] < 35000000)) {
 		    // if thats fine then do nothing/carry on
 		  } else {
-		     $sError = "Error: Only .jpg images under 350Kb are accepted for upload";
+		     $sError = "Invalid file type/size";
 		  }
 		} else {
-		 $sError = "Error: No file uploaded";
+		 $sError = "No file uploaded";
 		}
 
 		if($sError != ""){

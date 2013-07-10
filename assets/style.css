@@ -424,6 +424,7 @@ a:hover{
 
 #content label{
 	float: left;
+	clear: both;
 }
 
 #content form span.error{
@@ -442,6 +443,30 @@ a:hover{
 	max-width: 199px;
 	min-width: 199px;
 	height: 100px;
+}
+
+#content div.check{
+	float: left;
+	width: 200px;
+	line-height: 20px;
+}
+
+#content input[type="hidden"]{
+	display: none;
+}
+
+#content input[type="file"]{
+	float: left;
+}
+
+
+#content input[type="checkbox"]{
+	border: 1px red solid;
+	width: 10px;
+	height: 10px;
+	display: inline;
+	float: right;
+	margin-right: 50px;
 }
 
 #content input[type="submit"]{

@@ -18,8 +18,8 @@ class Order{
 		$oDatabase = new Database();
 
 		$sSQL = "INSERT INTO tborder (customerId, orderDate)
-				VALUES ('".$this->iCustomerId."',
-						'".$this->sOrderDate."')";
+				VALUES ('".$oDatabase->escape_value($this->iCustomerId)."',
+						'".$oDatabase->escape_value($this->sOrderDate)."')";
 
 		$bResult = $oDatabase->query($sSQL);
 
