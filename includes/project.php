@@ -106,11 +106,7 @@ class Project{
 				return $this->sImage;
 				break;
 			case 'product':
-				if($this->iProduct==1){
-					return true;
-				}else{
-					return false;
-				}
+				return $this->iProduct;
 				break;
 			case 'price':
 				return $this->iPrice;
@@ -124,6 +120,9 @@ class Project{
 		switch($sProperty){
 			case 'name':
 				$this->sName = $value;
+				break;
+			case 'date':
+				$this->dDate = $value;
 				break;
 			case 'desc':
 				$this->sDesc = $value;

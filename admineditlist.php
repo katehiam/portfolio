@@ -1,5 +1,6 @@
 <?php
 require_once("includes/header.php");
+require_once("includes/projectmanager.php");
 
 // admin verification -----
 require_once("includes/customer.php");
@@ -18,14 +19,11 @@ if(!isset($_SESSION['currentUser'])){
 
 ?>
 
-<h1>Admin Functions</h1>
-
-<ul>
-	<li><a href="adminaddproject.php">Add Project</a></li>
-	<li><a href="admineditlist.php">Edit Project</a></li>
-	<li><a href="logout.php">Logout</a></li>
-</ul>
+<h1>Choose a Project</h1>
 
 <?php
+
+echo View::renderEditList(ProjectManager::getProjects());
+
 require_once("includes/footer.php");
 ?>

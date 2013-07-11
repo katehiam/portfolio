@@ -59,6 +59,12 @@ class View{
 		$iGrandTotal = 0;
 		$iShipping = 3.49;
 
+		if(count($oCart)->contents == 0){
+			$sHTML .= '<div id="cart">
+				<div class="cartProduct">Your cart is empty</div>';
+			$iShipping = 0;
+		}
+
 		foreach($oCart->contents as $key=>$value){
 			$oProduct = new Project();
 			$oProduct->load($key);
@@ -103,6 +109,35 @@ class View{
 
 		return $sHTML;
 
+	}
+
+	static public function renderEditList($aProjects){
+
+		$sHTML = '';
+
+		$sHTML .= '<ul class="thumbnails">';
+
+		for($i=0;$i<count($aProjects);$i++){
+			$oCurrentProject = $aProjects[$i];
+			$sHTML .= '<li><a href="admineditproject.php?id='.$oCurrentProject->id.'">
+			<div><img class="thumbnails" src="assets/images/'.$oCurrentProject->image.'" /></div>
+			'.$oCurrentProject->name.'</a></li>';
+		}
+
+		$sHTML .= '</ul>';
+
+		return $sHTML;
+	}
+
+	static public function renderEditProject($oProject,$oForm){
+		
+		$sHTML = '';
+
+		$sHTML .= '<h1>Edit '.$oProject->name.'</h1>';
+
+		$sHTML .= $oForm->html;
+
+		return $sHTML;
 	}
 
 }

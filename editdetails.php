@@ -23,6 +23,8 @@ $aData['address'] = $oCustomer->address;
 $oForm->data = $aData;
 
 if(isset($_POST['submit'])){
+	$oForm->data = $_POST;
+	
 	$oForm->checkName('firstName');
 	$oForm->checkName('lastName');
 	$oForm->checkRequired('address');
@@ -41,8 +43,8 @@ if(isset($_POST['submit'])){
 
 }
 
-$oForm->makeInput('firstName','First Name');
-$oForm->makeInput('lastName','Last Name');
+$oForm->makeInput('firstName','First Name','name');
+$oForm->makeInput('lastName','Last Name','name');
 $oForm->makeTextArea('address','Postal Address');
 $oForm->makeSubmit('submit','Update');
 

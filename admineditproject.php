@@ -1,7 +1,7 @@
 <?php
 require_once("includes/header.php");
-require_once("includes/form.php");
 require_once("includes/project.php");
+require_once("includes/form.php");
 
 // admin verification -----
 require_once("includes/customer.php");
@@ -18,7 +18,22 @@ if(!isset($_SESSION['currentUser'])){
 }
 // ----- end admin verification
 
+$iCurrentProject = 1;
+if(isset($_GET['id'])){
+	$iCurrentProject = $_GET['id'];
+}
+
+$oProject = new Project();
+$oProject->load($iCurrentProject);
+
 $oForm = new Form();
+
+$aData = array();
+$aData['name'] = $oProject->name;
+$aData['desc'] = $oProject->desc;
+$aData['product'] = $oProject->product;
+$aData['price'] = $oProject->price;
+$oForm->data = $aData;
 
 if(isset($_POST['submit'])){
 	$oForm->data = $_POST;
@@ -26,49 +41,42 @@ if(isset($_POST['submit'])){
 
 	$oForm->checkRequired('name');
 	$oForm->checkRequired('desc');
-	$oForm->checkImageUpload('image');
+	if(!empty($_FILES['image']['name'])){
+		$oForm->checkImageUpload('image');
+	}
 	if($_POST['product'] == "1"){
 		$oForm->checkNumerics('price');
 	}
 
 	if($oForm->valid == true){
-
-		$oProject = new Project();
-
-		// rename and move image
-		$sNewName = time()."-".$_POST['name'].".jpg";
-		$oForm->moveFile("image",$sNewName);
-
 		$oProject->name = $_POST['name'];
 		$oProject->date = date("Y-m-d");
 		$oProject->desc = $_POST['desc'];
-		$oProject->image = $sNewName;
 		$oProject->product = $_POST['product'];
 		$oProject->price = $_POST['price'];
+		
+		if(!empty($_FILES['image']['name'])){ // if new image is uploaded
+			// rename and move image
+			$sNewName = time()."-".$_POST['name'].".jpg";
+			$oForm->moveFile("image",$sNewName);
+			$oProject->image = $sNewName;
+		}
 
 		$oProject->save();
 
-		// redirect
-		$sLocation = 'Location:index.php';
-		header($sLocation); // tweak the output_buffering in php.ini
+		header('Location:admineditlist.php'); // tweak the output_buffering in php.ini
 		exit;
 	}
 }
 
 $oForm->makeInput('name','Name','name');
 $oForm->makeTextArea('desc','Description');
-$oForm->makeFileUpload('image','Image');
+$oForm->makeFileUpload('image','New Image');
 $oForm->makeCheck('product','Product','1');
 $oForm->makeInput('price','Price','numeric');
-$oForm->makeSubmit('submit','Add');
+$oForm->makeSubmit('submit','Update');
 
-?>
-
-<h1>Add Project</h1>
-
-<?php
-
-echo $oForm->html;
+echo View::renderEditProject($oProject,$oForm);
 
 require_once("includes/footer.php");
 ?>

@@ -209,12 +209,10 @@ a:hover{
 	margin-bottom: 3px;
 }
 
-#content div#portfolio div:nth-child(odd){
+#content div#portfolio a{
 	float: left;
-}
-
-#content div#portfolio div:nth-child(even){
-	float: right;
+	margin-right: 1px;
+	margin-left: 1px;
 }
 
 /* hover images */
@@ -231,14 +229,17 @@ a:hover{
 	left:0;
 	background-color: #fff;
 	opacity: 0;
+	/* CSS3 transitions to make hover effect fade */
+	-webkit-transition:opacity .3s ease-in;  
+	-moz-transition:opacity .3s ease-in;  
+	-o-transition:opacity .3s ease-in;  
+	transition:opacity .3s ease-in;
 }
 
 #content div#portfolio a:hover div.hoverImg{
-	opacity: 0.7;
+	opacity: 0.85;
 	color: #6a737b;
 }
-
-
 
 /* PROJECT DETAILS */
 
@@ -573,4 +574,35 @@ a:hover{
 
 p#loginregister{
 	text-align: center;
+}
+
+/* ADMIN */
+
+#content ul.thumbnails{
+
+}
+
+#content ul.thumbnails li{
+	clear: both;
+	display: inline-block;
+	height: 100px;
+	width: 100%;
+	margin-bottom: 10px;
+	line-height: 100px;
+}
+
+#content ul.thumbnails li div{
+	height: 100px;
+	width: 100px;
+	overflow: hidden;
+	float: left;
+	margin-right: 20px;
+}
+
+#content img.thumbnails{
+	width: 150px;
+}
+
+#content img.editimage{
+	width: 147px;
 }

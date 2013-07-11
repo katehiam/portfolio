@@ -4,7 +4,7 @@ require_once("includes/form.php");
 require_once("includes/customer.php");
 require_once("includes/hasher.php");
 
-$oForm = new Form();
+$oForm = new Form("register");
 
 if(isset($_POST['submit'])){
 	$oForm->data = $_POST;
@@ -43,12 +43,12 @@ if(isset($_POST['submit'])){
 
 }
 
-$oForm->makeInput('email','Email');
-$oForm->makeInput('firstName','First Name');
-$oForm->makeInput('lastName','Last Name');
+$oForm->makeInput('email','Email','email');
+$oForm->makeInput('firstName','First Name','name');
+$oForm->makeInput('lastName','Last Name','name');
 $oForm->makeTextArea('address','Address');
 $oForm->makePasswordInput('password','Password');
-$oForm->makeConfirmPasswordInput('confirmPassword','Confirm Password');
+$oForm->makeConfirmPasswordInput('confirmPassword','Confirm Password','confirmPassword');
 $oForm->makeSubmit('submit','Register');
 
 ?>

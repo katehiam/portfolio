@@ -13,7 +13,7 @@ class Form{
 		$this->aFiles = array();
 	}
 
-	public function makeInput($sControlName,$sLabel){
+	public function makeInput($sControlName,$sLabel,$sClass=""){
 
 		$sData = "";
 		// if data exists, put it into sData and use it for the value
@@ -28,10 +28,10 @@ class Form{
 		}
 
 		$this->sHTML .= '<label for="'.$sControlName.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
-		<input type="text" name="'.$sControlName.'" value="'.$sData.'" />';
+		<input type="text" name="'.$sControlName.'" class="'.$sClass.'" value="'.$sData.'" />';
 	}
 
-	public function makePasswordInput($sControlName,$sLabel){
+	public function makePasswordInput($sControlName,$sLabel,$sClass=""){
 
 		$sData = "";
 		// if data exists, put it into sData and use it for the value
@@ -46,10 +46,10 @@ class Form{
 		}
 
 		$this->sHTML .= '<label for="'.$sControlName.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
-		<input type="password" name="'.$sControlName.'" value="'.$sData.'" />';
+		<input type="password" name="'.$sControlName.'" class="'.$sClass.'" value="'.$sData.'" />';
 	}
 
-	public function makeConfirmPasswordInput($sControlName,$sLabel){
+	public function makeConfirmPasswordInput($sControlName,$sLabel,$sClass=""){
 
 		$sErrors = "";
 		// if there is an error under this controlname
@@ -58,10 +58,10 @@ class Form{
 		}
 
 		$this->sHTML .= '<label for="'.$sControlName.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
-		<input type="password" name="'.$sControlName.'" />';
+		<input type="password" name="'.$sControlName.'" class="'.$sClass.'" />';
 	}
 
-	public function makeTextArea($sControlName,$sLabel){
+	public function makeTextArea($sControlName,$sLabel,$sClass=""){
 		$sData = "";
 		// if data exists, put it into sData and use it for the value
 		if(isset($this->aData[$sControlName])){
@@ -75,7 +75,7 @@ class Form{
 		}
 
 		$this->sHTML .= '<label for="'.$sControlName.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
-		<textarea type="text" name="'.$sControlName.'" col="10" rows="20">'.$sData.'</textarea>';
+		<textarea type="text" name="'.$sControlName.'" col="10" rows="20" class="'.$sClass.'">'.$sData.'</textarea>';
 	}
 
 	public function makeRadio($sControlName,$sLabel,$aValues){
@@ -114,7 +114,11 @@ class Form{
 			$sData = trim($this->aData[$sControlName]);
 		}
 
-		$this->sHTML .= '<div class="check">'.$sLabel.'<input type="checkbox" name="'.$sControlName.'" value="'.$sValue.'" /></div>';
+		if($sData == $sValue){
+			$this->sHTML .= '<div class="check">'.$sLabel.'<input type="checkbox" checked="checked" name="'.$sControlName.'" value="'.$sValue.'" /></div>';
+		}else{
+			$this->sHTML .= '<div class="check">'.$sLabel.'<input type="checkbox" name="'.$sControlName.'" value="'.$sValue.'" /></div>';
+		}
 
 	}
 
@@ -291,7 +295,7 @@ class Form{
 			$sErrors = $this->aErrors[$sControlName];
 		}
 
-		$this->sHTML .= '<label for"'.$sLabel.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
+		$this->sHTML .= '<label for="'.$sLabel.'">'.$sLabel.'</label><span class="error">'.$sErrors.'</span>
 		<input type="hidden" name="MAX_FILE_SIZE" value="1000000" />
 			<input name="'.$sControlName.'" type="file" />';
 	}

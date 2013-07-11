@@ -1,6 +1,6 @@
 // function to check that the field is not empty
-function checkRequired(iControlID){
-	var oControl = document.getElementById(iControlID);
+function checkRequired(oControl){
+	//var oControl = document.getElementById(iControlID);
 	var bVerified = false; // variable whether verified or not
 
 	if(oControl.value.length == 0) {
@@ -14,11 +14,11 @@ function checkRequired(iControlID){
 }
 
 // function to verify the input is a name
-function checkName(iControlID){
-	var oControl = document.getElementById(iControlID);
+function checkName(oControl){
+	//var oControl = document.getElementById(iControlID);
 	var bVerified = false; // variable whether verified or not
 
-	if(checkRequired(iControlID)){
+	if(checkRequired(oControl)){
 
 		var reName = new RegExp("[^a-zA-Z]");
 		var bResult = reName.test(oControl.value.trim());
@@ -36,11 +36,11 @@ function checkName(iControlID){
 }
 
 // function to verify the input is an email address
-function checkEmail(iControlID){
-	var oControl = document.getElementById(iControlID);
+function checkEmail(oControl){
+	//var oControl = document.getElementById(iControlID);
 	var bVerified = false; // variable whether verified or not
 
-	if(checkRequired(iControlID)){
+	if(checkRequired(oControl)){
 
 		var reEmail = new RegExp("^([a-zA-Z0-9_.-])+@(([a-zA-Z0-9-])+.)+([a-zA-Z0-9]{2,4})+$");
 		var bResult = reEmail.test(oControl.value.trim())
@@ -57,12 +57,12 @@ function checkEmail(iControlID){
 }
 
 // function to check that the confirmed password is the same as the first
-function checkConfirmPassword(iConfirmPasswordID,iOriginalPasswordID){
-	var oConfirmPassword = document.getElementById(iConfirmPasswordID);
-	var oOriginalPassword = document.getElementById(iOriginalPasswordID);
+function checkConfirmPassword(oConfirmPassword,oOriginalPassword){
+	//var oConfirmPassword = document.getElementById(iConfirmPasswordID);
+	//var oOriginalPassword = document.getElementById(iOriginalPasswordID);
 	var bVerified = false; // variable whether verified or not
 
-	if(checkRequired(iConfirmPasswordID)){
+	if(checkRequired(oConfirmPassword)){
 
 		if(oConfirmPassword != oOriginalPassword){
 			oConfirmPassword.previousElementSibling.innerHTML = 'Not identical';
@@ -74,6 +74,28 @@ function checkConfirmPassword(iConfirmPasswordID,iOriginalPasswordID){
 	}
 
 	return bVerified;
+}
+
+// function to verify the input is numerics only
+function checkNumeric(oControl){
+	//var oControl = document.getElementById(iControlID);
+	var bVerified = false; // variable whether verified or not
+
+	if(checkRequired(oControl)){
+
+		var reName = new RegExp("[0-9]");
+		var bResult = reName.test(oControl.value.trim());
+		if(!bResult){
+			oControl.previousElementSibling.innerHTML = 'Numerics only';
+		}else{
+			oControl.previousElementSibling.innerHTML = '';
+			bVerified = true;
+		}
+
+	}
+
+	return bVerified;
+
 }
 
 function checkSubmit(){
@@ -90,15 +112,50 @@ function checkSubmit(){
 
 window.onload = function(){
 	
-	var oRegistrationForm = document.getElementById("register");
-	if(oRegistrationForm){
-		oRegistrationForm.onsubmit = function(){
-			return checkSubmit();
+	// var oRegistrationForm = document.getElementById("register");
+	// if(oRegistrationForm){
+	// 	oRegistrationForm.onsubmit = function(){
+	// 		return checkSubmit();
 
+	// 	};
+	// };
+
+	var oRequiredInput = document.getElementsByTagName('textarea');
+	for(iCount=0;iCount<oRequiredInput.length;iCount++){
+		oRequiredInput[iCount].onblur = function(){
+			checkRequired(this);
 		};
 	};
-};
 
-function indexHover(){
+	var oEmailInput = document.getElementsByClassName('email');
+	for(iCount=0;iCount<oEmailInput.length;iCount++){
+		oEmailInput[iCount].onblur = function(){
+			checkEmail(this);
+		};
+	};
 	
-}
+
+	var oNameInput = document.getElementsByClassName('name');
+	for(iCount=0;iCount<oNameInput.length;iCount++){
+		oNameInput[iCount].onblur = function(){
+			checkName(this);
+		};
+	};
+
+	var oConfirmPasswordInput = document.getElementsByClassName('confirmPassword');
+	for(iCount=0;iCount<oConfirmPasswordInput.length;iCount++){
+		oConfirmPasswordInput[iCount].onblur = function(){
+			checkConfirmPassword(this);
+		};
+	};
+
+	var oNumericInput = document.getElementsByClassName('numeric');
+	for(iCount=0;iCount<oNumericInput.length;iCount++){
+		oNumericInput[iCount].onblur = function(){
+			checkNumeric(this);
+		};
+	};
+
+
+
+};
