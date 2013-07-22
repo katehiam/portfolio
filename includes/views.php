@@ -12,15 +12,18 @@ class View{
 
 			$oCurrentProject = $aProjects[$i];
 
-			$sHTML .= '
-					<a href="projectdetails.php?projectId='.$oCurrentProject->id.'">
-						<img src="assets/images/'.$oCurrentProject->image.'" />
-						<div class="hoverImg">
-							<h2>'.$oCurrentProject->name.'</h2>
-							<p>'.$oCurrentProject->desc.'</h2>
-						</div>
-					</a>
-				';
+			if($oCurrentProject->deleted == 0){
+
+				$sHTML .= '
+						<a href="projectdetails.php?projectId='.$oCurrentProject->id.'">
+							<img src="assets/images/'.$oCurrentProject->image.'" />
+							<div class="hoverImg">
+								<h2>'.$oCurrentProject->name.'</h2>
+								<p>'.$oCurrentProject->desc.'</h2>
+							</div>
+						</a>
+					';
+				}
 			}
 
 	
@@ -42,7 +45,7 @@ class View{
 				<span class="icon">
 					<a href="assets/images/'.$oProject->image.'">&#59157;</a>';
 		if($oProject->product){
-			$sHTML .= '<a href="add.php?id='.$oProject->id.'">&#10133;&#59197;</a>';
+			$sHTML .= '<a href="add.php?id='.$oProject->id.'">&#59197;</a>';
 		}
 
 		$sHTML .= '</span>
@@ -59,18 +62,19 @@ class View{
 		$iGrandTotal = 0;
 		$iShipping = 3.49;
 
-		if(count($oCart)->contents == 0){
+		if(count($oCart->contents) == 0){
 			$sHTML .= '<div id="cart">
 				<div class="cartProduct">Your cart is empty</div>';
 			$iShipping = 0;
+		}else{
+			$sHTML .= '<div id="cart">';
 		}
 
 		foreach($oCart->contents as $key=>$value){
 			$oProduct = new Project();
 			$oProduct->load($key);
 
-			$sHTML .= '<div id="cart">
-				<div class="cartProduct">
+			$sHTML .= '<div class="cartProduct">
 					<span class="productName">'.htmlentities($oProduct->name).'</span>
 					<span class="productQty">'.$value.'</span>
 					<span class="productRemove icon"><a href="remove.php?id='.$oProduct->id.'">&#9003;</a></span>

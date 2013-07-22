@@ -11,6 +11,7 @@ class Project{
 	private $sImage;
 	private $iProduct;
 	private $iPrice;
+	private $iDeleted;
 
 	public function __construct() {
 		$this->iProjectId = 0;
@@ -19,6 +20,7 @@ class Project{
 		$this->sDesc = '';
 		$this->sImage = '';
 		$this->iProduct = 0; // 0 = not product. 1 = product
+		$this->iDeleted = 0; // 0 = active. 1 = deleted
 	}
 
 	// this function will load a project from the db
@@ -26,7 +28,7 @@ class Project{
 	public function load($iProjectId){
 		$oDatabase = new Database();
 
-		$sSQL = 'SELECT id, name, date, description, image, product, price
+		$sSQL = 'SELECT id, name, date, description, image, product, price, deleted
 					FROM tbproject
 					WHERE id = '.$oDatabase->escape_value($iProjectId);
 
@@ -41,6 +43,7 @@ class Project{
 		$this->sImage = $aProject['image'];
 		$this->iProduct = $aProject['product'];
 		$this->iPrice = $aProject['price'];
+		$this->iDeleted = $aProject['deleted'];
 
 		$oDatabase->close();
 
@@ -52,13 +55,14 @@ class Project{
 
 		if($this->iProjectId == 0){
 			//insert
-			$sSQL = "INSERT INTO tbproject (name, date, description, image, product, price)
+			$sSQL = "INSERT INTO tbproject (name, date, description, image, product, price, deleted)
 					VALUES ('".$oDatabase->escape_value($this->sName)."',
 							'".$oDatabase->escape_value($this->dDate)."',
 							'".$oDatabase->escape_value($this->sDesc)."',
 							'".$oDatabase->escape_value($this->sImage)."',
 							'".$oDatabase->escape_value($this->iProduct)."',
-							'".$oDatabase->escape_value($this->iPrice)."')";
+							'".$oDatabase->escape_value($this->iPrice)."',
+							'0')";
 
 			$bResult = $oDatabase->query($sSQL);
 
@@ -75,7 +79,8 @@ class Project{
 					description='".$oDatabase->escape_value($this->sDesc)."',
 					image='".$oDatabase->escape_value($this->sImage)."',
 					product='".$oDatabase->escape_value($this->iProduct)."',
-					price='".$oDatabase->escape_value($this->iPrice)."'
+					price='".$oDatabase->escape_value($this->iPrice)."',
+					deleted='".$oDatabase->escape_value($this->iDeleted)."'
 					WHERE id=".$oDatabase->escape_value($this->iProjectId);
 
 			$bResult = $oDatabase->query($sSQL);
@@ -111,6 +116,9 @@ class Project{
 			case 'price':
 				return $this->iPrice;
 				break;
+			case 'deleted':
+				return $this->iDeleted;
+				break;
 			default:
 				die($sProperty." is not allowed to be read from");
 		}
@@ -135,6 +143,9 @@ class Project{
 				break;
 			case 'price':
 				$this->iPrice = $value;
+				break;
+			case 'deleted':
+				$this->iDeleted = $value;
 				break;
 			default:
 				die($sProperty." is not allowed to be written to");

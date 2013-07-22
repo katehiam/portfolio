@@ -54,6 +54,7 @@ if(isset($_POST['submit'])){
 		$oProject->desc = $_POST['desc'];
 		$oProject->product = $_POST['product'];
 		$oProject->price = $_POST['price'];
+		$oProject->deleted = $_POST['deleted'];
 		
 		if(!empty($_FILES['image']['name'])){ // if new image is uploaded
 			// rename and move image
@@ -69,11 +70,12 @@ if(isset($_POST['submit'])){
 	}
 }
 
-$oForm->makeInput('name','Name','name');
+$oForm->makeInput('name','Name','required');
 $oForm->makeTextArea('desc','Description');
-$oForm->makeFileUpload('image','New Image');
+$oForm->makeFileUpload('image','New Image (or leave blank)');
 $oForm->makeCheck('product','Product','1');
 $oForm->makeInput('price','Price','numeric');
+$oForm->makeCheck('deleted','Inactive','1');
 $oForm->makeSubmit('submit','Update');
 
 echo View::renderEditProject($oProject,$oForm);

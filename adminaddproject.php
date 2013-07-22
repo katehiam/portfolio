@@ -55,7 +55,7 @@ if(isset($_POST['submit'])){
 	}
 }
 
-$oForm->makeInput('name','Name','name');
+$oForm->makeInput('name','Name','required');
 $oForm->makeTextArea('desc','Description');
 $oForm->makeFileUpload('image','Image');
 $oForm->makeCheck('product','Product','1');

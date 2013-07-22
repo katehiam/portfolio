@@ -39,7 +39,7 @@ if(isset($_POST['submit'])){
 
 }
 
-$oForm->makeInput('email','Email');
+$oForm->makeInput('email','Email','email');
 $oForm->makePasswordInput('password','Password');
 $oForm->makeSubmit('submit','Login');
 

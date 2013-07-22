@@ -127,6 +127,13 @@ window.onload = function(){
 		};
 	};
 
+	var oRequiredInput = document.getElementsByClassName('required');
+	for(iCount=0;iCount<oRequiredInput.length;iCount++){
+		oRequiredInput[iCount].onblur = function(){
+			checkRequired(this);
+		};
+	};
+
 	var oEmailInput = document.getElementsByClassName('email');
 	for(iCount=0;iCount<oEmailInput.length;iCount++){
 		oEmailInput[iCount].onblur = function(){

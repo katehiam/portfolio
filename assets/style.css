@@ -121,6 +121,7 @@ p{
 
 a:link{
 	color: #6a737b;
+	text-decoration: none;
 }
 
 a:visited{
@@ -134,6 +135,12 @@ a:hover{
 .icon{
 	font-family: Entypo;
 	font-size: 50px;
+}
+
+#content ul li{
+	float: left;
+	width: 50%;
+	height: 30px;
 }
 
 /* CONTENT */
@@ -204,15 +211,18 @@ a:hover{
 
 /* HOME */
 
-#content div#portfolio a img{
-	width: 147px;
-	margin-bottom: 3px;
+#content div#portfolio{
+	/* image columns CSS3 */
+	-webkit-column-count: 2;
+	-webkit-column-gap:   0px;
+	-moz-column-count:    2;
+	-moz-column-gap:      0px;
+	column-count:         2;
+	column-gap:           0px;
 }
 
-#content div#portfolio a{
-	float: left;
-	margin-right: 1px;
-	margin-left: 1px;
+#content div#portfolio a img{
+	width: 147px;
 }
 
 /* hover images */
@@ -255,10 +265,9 @@ a:hover{
 
 /* ABOUT */
 
-#content ul li{
-	float: left;
-	width: 50%;
-	height: 30px;
+#content ul#aboutInfo li{
+	float: none;
+	width: auto;
 }
 
 #content ul li span.icon{
@@ -267,6 +276,8 @@ a:hover{
 	height: 30px;
 	line-height: 10px;
 	overflow: hidden;
+	text-align: center;
+	margin-right: 15px;
 }
 
 /* skills */
@@ -295,12 +306,17 @@ a:hover{
 
 #content div.skills h1{
 	position: absolute;
-	top: 40px;
+	top: 42px;
 	left: 50%;
 	margin-left: -40px;
 	text-align: center;
 	display: block;
 	width: 80px;
+	vertical-align: middle;
+}
+
+#content div.skills#printskills h1{
+	top: 48px;
 }
 
 /* --- print software --- */
@@ -500,7 +516,7 @@ a:hover{
 }
 
 #content div#cart .productName{
-	width: 100px;
+	width: 160px;
 }
 
 #content div#cart .productQty{
@@ -513,7 +529,7 @@ a:hover{
 
 #content div#cart div.cartProduct span.productRemove a{
 	height: 30px;
-	display: inline-block;
+	display: block;
 	text-decoration: none;
 	margin-top: 0px;
 	color: red;
@@ -605,4 +621,18 @@ p#loginregister{
 
 #content img.editimage{
 	width: 147px;
+}
+
+#content a.button{
+	display: block;
+	margin-bottom: 30px;
+	background-color: #B197A0;
+	height: 50px;
+	width: 200px;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: Source Sans Pro Bold;
+	text-align: center;
+	line-height: 50px;
+	margin: auto;
 }
