@@ -54,7 +54,8 @@ table {
     font-family: 'Entypo';
     src: url('fonts/entypo.eot');
     src: local('Entypo'), 
-         url('font	s/entypo.ttf') format('truetype'),
+         url('fonts/entypo.ttf') format('truetype'),
+         url('fonts/entypo.woff') format('woff'),
          url('fonts/entypo.svg#font') format('svg'); 
 }
 
@@ -64,6 +65,7 @@ table {
     src: local('Source Sans Pro'), 
          local('Source Sans Pro Regular'), 
          url('fonts/SourceSansPro-Regular-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Regular-webfont.woff') format('woff'),
          url('fonts/SourceSansPro-Regular-webfont.svg#font') format('svg'); 
 }
 
@@ -73,6 +75,7 @@ table {
     src: local('Source Sans Pro'), 
          local('Source Sans Pro Bold'),
          url('fonts/SourceSansPro-Bold-webfont.ttf') format('truetype'),
+         url('fonts/SourceSansPro-Bold-webfont.woff') format('woff'),
          url('fonts/SourceSansPro-Bold-webfont.svg#font') format('svg'); 
     font-weight: bold;
 }
@@ -83,6 +86,7 @@ table {
     src: local('Colaborate'), 
          local('Colaborate Regular'),
          url('fonts/ColabReg-webfont.ttf') format('truetype'),
+         url('fonts/ColabReg-webfont.woff') format('woff'),
          url('fonts/ColabReg-webfont.svg#font') format('svg'); 
 }
 
@@ -200,10 +204,6 @@ a:hover{
 	color: #B197A0;
 }
 
-#content{
-
-}
-
 #footer{
 	clear: both;
 	margin-bottom: 30px;
@@ -237,18 +237,38 @@ a:hover{
 	position: absolute;
 	top:0;
 	left:0;
-	background-color: #fff;
 	opacity: 0;
-	/* CSS3 transitions to make hover effect fade */
-	-webkit-transition:opacity .3s ease-in;  
-	-moz-transition:opacity .3s ease-in;  
-	-o-transition:opacity .3s ease-in;  
-	transition:opacity .3s ease-in;
 }
 
-#content div#portfolio a:hover div.hoverImg{
-	opacity: 0.85;
-	color: #6a737b;
+/* search bar */
+
+#content form#searchbar{
+	position: fixed;
+	margin: auto;
+	bottom: 0px;
+	z-index: 50;
+	background-color: #fff;
+	width: 100%;
+	padding-top: 15px;
+	padding-bottom: 15px;
+}
+
+#content form#searchbar fieldset{
+	margin: auto;
+	width: 300px;
+}
+
+#content form#searchbar input{
+	float: left;
+	height: 30px;
+	margin-bottom: 0px;
+}
+
+#content form#searchbar input[type="submit"]{
+	float: left;
+	width: 35px;
+	height: 35px;
+	margin-left: 20px;
 }
 
 /* PROJECT DETAILS */
@@ -264,6 +284,11 @@ a:hover{
 }
 
 /* ABOUT */
+
+#content ul#aboutInfo{
+	width: 200px;
+	margin: auto;
+}
 
 #content ul#aboutInfo li{
 	float: none;
@@ -635,4 +660,196 @@ p#loginregister{
 	text-align: center;
 	line-height: 50px;
 	margin: auto;
+}
+
+
+
+
+
+/* -------------------------- TABLET -------------------------- */
+
+@media (max-width:850px){
+	#content form#searchbar{
+		left: 30px;
+		margin-left: 0px;
+	}
+}
+
+
+
+/* -------------------------- DESKTOP -------------------------- */
+
+
+@media (min-width:800px){
+
+
+	#container{
+		width: 800px;
+	}
+
+
+	/* HOME */
+
+	#content div#portfolio a img{
+		width: 350px;
+		margin-bottom: 30px;
+	}
+
+	#content div#portfolio{
+		margin-left: 100px;
+		/* image columns CSS3 */
+		-webkit-column-count: 2;
+		-webkit-column-gap:   30px;
+		-moz-column-count:    2;
+		-moz-column-gap:      30px;
+		column-count:         2;
+		column-gap:           30px;
+	}
+
+	/* hover */
+
+	#content div#portfolio a div.hoverImg{
+		width: 350px;
+		position: absolute;
+		top:0;
+		left:0;
+		background-color: #fff;
+		opacity: 0;
+		/* CSS3 transitions to make hover effect fade */
+		-webkit-transition:opacity .3s ease-in;  
+		-moz-transition:opacity .3s ease-in;  
+		-o-transition:opacity .3s ease-in;  
+		transition:opacity .3s ease-in;
+	}
+
+	#content div#portfolio a:hover div.hoverImg{
+		opacity: 0.85;
+		color: #6a737b;
+	}
+
+	/* search bar */
+
+	#content form#searchbar{
+		margin-left: -20px;
+		margin-top: 100px;
+		bottom: auto;
+		width: 260px;
+		padding-top: 10px;
+		padding-bottom: 10px;
+	}
+
+	#content form#searchbar input[type="submit"]{
+		margin-left: 10px;
+	}
+
+	/* PROJECT DETAILS */
+
+	#content img#detailsImg{
+		width: 385px;
+		float: left;
+	}
+
+	#content div#detailsContent{
+		width: 385px;
+		float: right;
+	}
+
+	/* ABOUT */
+
+	#content ul#aboutInfo{
+		width: 400px;
+		margin: auto;
+	}
+
+	#content ul#aboutInfo li{
+		float: left;
+		width: 50%;
+		height: 30px;
+	}
+
+	/* REGISTER FORM */
+
+	#content form#register{
+		width: 430px;
+	}
+
+	#content form#register fieldset:nth-child(odd){
+		float: left;
+		width: 200px;
+	}
+
+	#content form#register fieldset:nth-child(even){
+		float: right;
+		width: 200px;
+	}
+
+	#content form#register fieldset:nth-child(3){
+		clear: both;
+		width: 430px;
+		text-align: center;
+	}
+
+	p#loginregister{
+		clear: both;
+	}
+
+	#content form#register input[type="submit"]{
+		display: inline;
+	}
+
+	/* CART */
+
+	#content div#cart{
+		width: 500px;
+		float: left;
+	}
+
+	#content div#cart .productName{
+	width: 300px;
+	}
+
+	#content div#postalAddress{
+		margin-left: 30px;
+	}
+
+	#content form#purchase{
+		clear: both;
+		float:left;
+		width: 500px;
+		text-align: center;
+	}
+
+	#content form#purchase input[type='submit']{
+		display: inline;
+	}
+
+	#content{
+		position: relative;
+	}
+
+	#content div.accountFunctions{
+		float: right;
+		margin-left: 30px;
+		position: absolute;
+		right: 0px;
+	}
+
+	#content a.accountFunctions{
+		background-color: #fff;
+		color: #c8c8c8; /* color */
+		font-size: 40px;
+		width: 40px;
+		height: 40px;
+		line-height: 0px;
+		margin-top: 15px;
+		margin-left: 6px;
+	}
+
+	#content a.accountFunctions:hover{
+		background-color: #fff;
+		color: #B197A0; /* color */
+	}
+
+
+
 }

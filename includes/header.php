@@ -10,6 +10,9 @@ require_once("includes/customer.php");
 	<head>
 	<meta http-equiv="Content-Type" content="text/html; charset=utf-8" />
 	<link rel="stylesheet" type="text/css" href="assets/style.css">
+	<!--[if IE]>
+	<link rel="stylesheet" type="text/css" href="assets/iestyle.css">
+	<![endif]-->
 	<script type="text/javascript" src="assets/javascript.js"></script>
 	<title>Kate Hiam - Graphic and Web Designer</title>
 	</head>

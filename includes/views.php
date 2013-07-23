@@ -45,7 +45,11 @@ class View{
 				<span class="icon">
 					<a href="assets/images/'.$oProject->image.'">&#59157;</a>';
 		if($oProject->product){
-			$sHTML .= '<a href="add.php?id='.$oProject->id.'">&#59197;</a>';
+			if(isset($_SESSION['currentUser'])){
+				$sHTML .= '<a href="add.php?id='.$oProject->id.'">&#59197;</a>';
+			}else{
+				$sHTML .= '<a href="login.php">&#59197;</a>';
+			}
 		}
 
 		$sHTML .= '</span>

@@ -1,0 +1,28 @@
+/* HOME */
+
+#content div#portfolio a img{
+	margin-bottom: 0px;
+}
+
+#content div#portfolio a{
+	float: left;
+	margin-right: 5px;
+}
+
+/* hover */
+
+#content div#portfolio a{
+	width: 385px;
+	position: relative;
+	display: block;
+}
+
+#content div#portfolio a div.hoverImg{
+	background-color: #fff;
+	opacity: 0;
+}
+
+#content div#portfolio a:hover div.hoverImg{
+	opacity: 0.85;
+	color: #6a737b;
+}

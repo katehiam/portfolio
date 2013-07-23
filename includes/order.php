@@ -32,6 +32,16 @@ class Order{
 		$oDatabase->close();
 	}
 
+	public function __get($sProperty){
+		switch($sProperty){
+			case 'id':
+				return $this->iOrderId;
+				break;
+			default:
+			die($sProperty." could not be read from");
+		}
+	}
+
 	public function __set($sProperty,$value){
 		switch($sProperty){
 			case 'customerId':
