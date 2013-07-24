@@ -20,7 +20,7 @@ if(!isset($_SESSION['currentUser'])){
 
 <h1>Admin Functions</h1>
 
-<ul>
+<ul id="adminMenu">
 	<li><a href="adminaddproject.php">Add Project</a></li>
 	<li><a href="admineditlist.php">Edit Project</a></li>
 	<li><a href="logout.php">Logout</a></li>

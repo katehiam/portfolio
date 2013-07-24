@@ -7,9 +7,14 @@ $oForm = new Form('searchbar');
 $oForm->makeInput("search","");
 $oForm->makeSubmit("submit","&#128269;");
 
-
 echo $oForm->html;
-echo View::renderProjects(ProjectManager::getProjects());
+if((isset($_POST["submit"])) && (!empty($_POST['search']))){
+	echo View::renderProjects(ProjectManager::search($_POST["search"]));
+}else{
+	echo View::renderProjects(ProjectManager::getProjects());
+}
 
 require_once("includes/footer.php");
+
 ?>
+

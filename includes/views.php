@@ -129,7 +129,7 @@ class View{
 			$oCurrentProject = $aProjects[$i];
 			$sHTML .= '<li><a href="admineditproject.php?id='.$oCurrentProject->id.'">
 			<div><img class="thumbnails" src="assets/images/'.$oCurrentProject->image.'" /></div>
-			'.$oCurrentProject->name.'</a></li>';
+			<span>'.$oCurrentProject->name.'</span></a></li>';
 		}
 
 		$sHTML .= '</ul>';

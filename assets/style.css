@@ -141,17 +141,21 @@ a:hover{
 	font-size: 50px;
 }
 
+#content ul{
+	padding-top: 20px;
+}
+
 #content ul li{
 	float: left;
 	width: 50%;
 	height: 30px;
 }
 
-/* CONTENT */
-
-#content ul{
-	margin-top: 20px;
+#content ul li a{
+	text-decoration: underline;
 }
+
+/* CONTENT */
 
 #container{
 	margin: auto;
@@ -620,7 +624,8 @@ p#loginregister{
 /* ADMIN */
 
 #content ul.thumbnails{
-
+	width: 300px;
+	margin: auto;
 }
 
 #content ul.thumbnails li{
@@ -629,6 +634,9 @@ p#loginregister{
 	height: 100px;
 	width: 100%;
 	margin-bottom: 10px;
+}
+
+#content ul.thumbnails li span{
 	line-height: 100px;
 }
 
@@ -668,23 +676,10 @@ p#loginregister{
 
 /* -------------------------- TABLET -------------------------- */
 
-@media (max-width:850px){
-	#content form#searchbar{
-		left: 30px;
-		margin-left: 0px;
-	}
-}
-
-
-
-/* -------------------------- DESKTOP -------------------------- */
-
-
-@media (min-width:800px){
-
+@media (min-width:700px){
 
 	#container{
-		width: 800px;
+		width: 700px;
 	}
 
 
@@ -730,12 +725,12 @@ p#loginregister{
 	/* search bar */
 
 	#content form#searchbar{
-		margin-left: -20px;
 		margin-top: 100px;
 		bottom: auto;
 		width: 260px;
 		padding-top: 10px;
 		padding-bottom: 10px;
+		left: 30px;
 	}
 
 	#content form#searchbar input[type="submit"]{
@@ -850,6 +845,63 @@ p#loginregister{
 		color: #B197A0; /* color */
 	}
 
+	/* ADMIN */
 
+	#content ul#adminMenu{
+		width: 300px;
+		margin: auto;
+	}
+
+}
+
+
+/* -------------------------- DESKTOP -------------------------- */
+
+@media (min-width:800px){
+
+	#container{
+		width: 800px;
+	}
+
+	/* HOME */
+
+	#content form#searchbar{
+		margin-left: -50px;
+		left: auto;
+	}
+
+	/* ADMIN */
+
+	#content ul.thumbnails{
+		margin-left: 350px;
+		width: 800px;
+	}
+
+	#content ul.thumbnails li{
+		float: left;
+		clear: none;
+		display: inline;
+		position: relative;
+	}
+
+	#content ul.thumbnails li a:hover div{
+		opacity: 0.2;
+	}
+
+	#content ul.thumbnails li a:hover span{
+		display: inline;
+		position: absolute;
+		top: 0px;
+		left: 0px;
+		width: 100px;
+		height: 100px;
+		line-height: normal;
+		color: #6a737b;
+		text-decoration: none;
+	}
+
+	#content ul.thumbnails li a span{
+		display: none;
+	}
 
 }
