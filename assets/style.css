@@ -264,15 +264,17 @@ a:hover{
 
 #content form#searchbar input{
 	float: left;
-	height: 30px;
+	height: 35px;
 	margin-bottom: 0px;
 }
 
 #content form#searchbar input[type="submit"]{
 	float: left;
 	width: 35px;
-	height: 35px;
+	height: 40px;
 	margin-left: 20px;
+	font-family: Entypo;
+	font-size: 40px;
 }
 
 /* PROJECT DETAILS */

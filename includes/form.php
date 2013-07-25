@@ -122,8 +122,8 @@ class Form{
 
 	}
 
-	public function makeSubmit($sControlName,$sLabel){
-		$this->sHTML .= '<input type="submit" name="'.$sControlName.'" value="'.$sLabel.'" />';
+	public function makeSubmit($sControlName,$sLabel,$sClass=""){
+		$this->sHTML .= '<input type="submit" name="'.$sControlName.'" value="'.$sLabel.'" class="'.$sClass.'" />';
 	}
 
 	public function checkRequired($sControlName){

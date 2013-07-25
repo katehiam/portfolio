@@ -105,6 +105,15 @@ class View{
 
 	}
 
+	// INCOMPLETE
+	static public function grandTotal($oCart){
+		$iGrandTotal = 0;
+		foreach($oCart->contents as $key=>$value){
+			$iGrandTotal += ($oProduct->price)*$value;
+		}
+		return $iGrandTotal;
+	}
+
 	static public function renderCartAddress($oCustomer){
 
 		$sHTML = '';
@@ -144,6 +153,40 @@ class View{
 		$sHTML .= '<h1>Edit '.$oProject->name.'</h1>';
 
 		$sHTML .= $oForm->html;
+
+		return $sHTML;
+	}
+
+	// INCOMPLETE
+	static public function renderOrders($aOrders){
+		$sHTML = '';
+
+		$sHTML .= '<h1>Your Orders</h1>';
+
+		for($iCountOrders=0;$iCountOrders<count($aOrders);$iCountOrders++){
+
+			$oCurrentOrder = $aOrders[$iCountOrders];
+
+			$sHTML .= '<div id="cart">Order Id:'.$oCurrentOrder->id.' Date:'.$oCurrentOrder->date;
+
+			for($iCountOrderLines=0;$iCountOrderLines<count($oCurrentOrder->orderLines);$iCountOrderLines++){
+				$oCurrentOL = $oCurrentOrder->orderLines[$iCountOrderLines];
+				$sHTML .= '<div class="cartProduct">
+				<span class="productName">'.htmlentities($oCurrentOL->name).'</span>
+				</div>';
+			}
+
+			$sHTML .= number_format($oCurrentOrder->totalPrice,2).'</div>';
+
+			/*
+			foreach(as $key=>$value){
+				$sHTML .= '<span class="productName">'.htmlentities($oProduct->name).'</span>
+						<span class="productQty">'.$value.'</span>
+						<span class="productPrice"></span>';
+			}
+			*/
+
+		}
 
 		return $sHTML;
 	}

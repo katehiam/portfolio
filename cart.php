@@ -11,6 +11,9 @@ $oCustomer->load($_SESSION['currentUser']);
 
 $oCart = $_SESSION['cart'];
 
+// incomplete
+$iGrandTotal = View::grandTotal($oCart);
+
 $oForm = new Form('purchase');
 
 if((isset($_POST['submit'])) && (count($oCart->contents) != 0)){
@@ -19,6 +22,7 @@ if((isset($_POST['submit'])) && (count($oCart->contents) != 0)){
 	$oOrder = new Order;
 	$oOrder->customerId = $oCustomer->id;
 	$oOrder->date = date("Y-m-d");
+	$oOrder->totalPrice = $iGrandTotal; // incomplete
 	$oOrder->save();
 
 	// create orderline
@@ -40,7 +44,7 @@ $oForm->makeSubmit('submit','Purchase');
 <h1>Cart</h1>
 
 <?php
-echo View::renderCartOrderList($_SESSION['cart']);
+echo View::renderCartOrderList($oCart);
 echo View::renderCartAddress($oCustomer);
 echo $oForm->html;
 ?>
@@ -48,6 +52,7 @@ echo $oForm->html;
 <div class="accountFunctions">
 	<a href="editdetails.php" class="accountFunctions icon" alt="Edit Details">&#9998;</a>
 	<a href="logout.php" class="accountFunctions icon" alt="Logout">&#59201;</a>
+	<a href="orders.php" alt="Orders">Orders</a>
 </div>
 
 
