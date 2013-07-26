@@ -5,7 +5,7 @@ require_once("includes/form.php");
 
 $oForm = new Form('searchbar');
 $oForm->makeInput("search","");
-$oForm->makeSubmit("submit","&#128269;");
+$oForm->makeSubmit("submit","search");
 
 echo $oForm->html;
 if((isset($_POST["submit"])) && (!empty($_POST['search']))){

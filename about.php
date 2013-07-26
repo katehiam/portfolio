@@ -6,7 +6,7 @@ require_once("includes/header.php");
 
 <ul id="aboutInfo">
 <li><span class="icon">&#59172;</span>Auckland, NZ</li>
-<li><span class="icon">&#9993;</span>katehiam@gmail.com</li>
+<li><span class="icon">&#9993;</span><a href="contactme.php">katehiam@gmail.com</a></li>
 <li><span class="icon">&#128241;</span>(+64)21 1323 431</li>
 <li><span class="icon">&#127912;</span><a href="behance.net/katehiam">behance.net/katehiam</a></li>
 </ul>
@@ -48,6 +48,8 @@ require_once("includes/header.php");
 		<li id="as">Actionscript</li>
 	</ul>
 </div>
+
+<div class="button" id="hireMe" ><a href="contactme.php">Hire Me</a></div>
 
 <?php
 require_once("includes/footer.php");

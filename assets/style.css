@@ -94,11 +94,11 @@ table {
 ----------
 COLOURS:
 
-light pink: #baa3ab
-dark pink: ??
-light grey: ??
+light pink: #d2bec6
+dark pink: #baa3ab
+light grey: #a4a9ad
 dark grey: #6a737b
-red: #b14D43
+red: #b14d43
 ----------
 */
 
@@ -128,17 +128,30 @@ a:link{
 	text-decoration: none;
 }
 
+p a:link{
+	text-decoration: underline;
+}
+
 a:visited{
 	color: #6a737b;
 }
 
 a:hover{
-	color: #c8c8c8;
+	color: #a4a9ad;
 }
 
 .icon{
 	font-family: Entypo;
 	font-size: 50px;
+	color: #a4a9ad;
+}
+
+.projectDetailsIcons a{
+	color: #a4a9ad !important;
+}
+
+.projectDetailsIcons a:hover{
+	color: #baa3ab !important;
 }
 
 #content ul{
@@ -155,16 +168,43 @@ a:hover{
 	text-decoration: underline;
 }
 
+.clear{
+	clear: both;
+}
+
+#content div.button a{
+	background-color: #baa3ab;
+	border: none;
+	height: 50px;
+	width: 200px;
+	text-transform: uppercase;
+	color: #fff;
+	font-family: Source Sans Pro Bold;
+	cursor: hand;
+	cursor: pointer;
+	text-align: center;
+	line-height: 50px;
+	display: block;
+}
+
+#content div.button a:hover{
+	background-color: #d2bec6;
+}
+
+#content form input[type="submit"]:hover{
+	background-color: #d2bec6;
+}
+
+#content div.button a{
+	color: #fff;
+}
+
 /* CONTENT */
 
 #container{
 	margin: auto;
 	width: 300px;
 	overflow: hidden; /* stop horizontal scrolling accidently appearing */
-}
-
-#header{
-
 }
 
 #header div#logo{
@@ -175,7 +215,7 @@ a:hover{
 	background-position: center center;
 	background-size: 300px 300px;
 	font-size: 0px;
-	border-bottom: 1px #C8C8C8 solid;
+	border-bottom: 1px #a4a9ad solid;
 }
 
 #header ul#nav{
@@ -197,15 +237,15 @@ a:hover{
 	text-decoration: none;
 	font-family: Entypo;
 	font-size: 50px;
-	color: #C8C8C8;
+	color: #a4a9ad;
 }
 
 #header ul#nav li a:visited{
-	color: #C8C8C8;
+	color: #a4a9ad;
 }
 
 #header ul#nav li a:hover{
-	color: #B197A0;
+	color: #baa3ab;
 }
 
 #footer{
@@ -264,17 +304,15 @@ a:hover{
 
 #content form#searchbar input{
 	float: left;
-	height: 35px;
+	height: 30px;
 	margin-bottom: 0px;
 }
 
 #content form#searchbar input[type="submit"]{
 	float: left;
-	width: 35px;
-	height: 40px;
+	width: 60px;
+	height: 35px;
 	margin-left: 20px;
-	font-family: Entypo;
-	font-size: 40px;
 }
 
 /* PROJECT DETAILS */
@@ -309,6 +347,11 @@ a:hover{
 	overflow: hidden;
 	text-align: center;
 	margin-right: 15px;
+}
+
+#content div.button#hireMe{
+	margin: auto;
+	width: 200px;
 }
 
 /* skills */
@@ -477,7 +520,7 @@ a:hover{
 
 #content form span.error{
 	float: right;
-	color: red;
+	color: #b14d43;
 }
 
 #content input, #content textarea{
@@ -507,9 +550,7 @@ a:hover{
 	float: left;
 }
 
-
 #content input[type="checkbox"]{
-	border: 1px red solid;
 	width: 10px;
 	height: 10px;
 	display: inline;
@@ -518,7 +559,7 @@ a:hover{
 }
 
 #content input[type="submit"]{
-	background-color: #B197A0;
+	background-color: #baa3ab;
 	border: none;
 	height: 50px;
 	width: 200px;
@@ -563,7 +604,7 @@ a:hover{
 	display: block;
 	text-decoration: none;
 	margin-top: 0px;
-	color: red;
+	color: #b14d43;
 	overflow: hidden; /* overflow: hidden to hide anything outside the box */
 }
 
@@ -594,6 +635,20 @@ a:hover{
 	float: left;
 }
 
+#content div.button#orders a{
+	clear: right;
+	float: right;
+	width: 100px;
+	height: 30px;
+	line-height: 30px;
+	margin: 0px;
+}
+
+#content div.button#orders{
+	margin-top: 4px;
+	border: 0px;
+}
+
 #content div.accountFunctions{
 	clear: right;
 	width: 100px;
@@ -604,7 +659,7 @@ a:hover{
 	float: left;
 	width: 48px;
 	text-align: center;
-	background-color: #C8C8C8;
+	background-color: #a4a9ad;
 	color: #fff;
 	text-decoration: none;
 	height: 50px;
@@ -615,6 +670,39 @@ a:hover{
 
 #content a.accountFunctions:first-child{
 	margin-right: 4px;
+}
+
+/* ORDERS */
+
+#content div#orders{
+	border-top: 2px #6a737b solid;
+	border-bottom: 2px #6a737b solid;
+	margin-top: 20px;
+	margin-bottom: 30px;
+}
+
+#content div.orderHeader{
+	border-bottom: 1px #6a737b solid;
+	margin-bottom: 2px;
+	line-height: 20px;
+}
+
+#content div.orderTotal{
+	border-top: 1px #6a737b solid;
+	margin-top: 2px;
+	line-height: 20px;
+}
+
+#content div#orders span.orderHeaderLeft{
+	float: left;
+}
+
+#content div#orders span.orderHeaderRight{
+	float: right;
+}
+
+#content div#orders div.orderLines{
+	clear: both;
 }
 
 /* LOGIN REGISTER */
@@ -661,7 +749,7 @@ p#loginregister{
 #content a.button{
 	display: block;
 	margin-bottom: 30px;
-	background-color: #B197A0;
+	background-color: #baa3ab;
 	height: 50px;
 	width: 200px;
 	text-transform: uppercase;
@@ -684,23 +772,22 @@ p#loginregister{
 		width: 700px;
 	}
 
-
 	/* HOME */
 
 	#content div#portfolio a img{
-		width: 350px;
-		margin-bottom: 30px;
+		width: 300px;
+		margin-bottom: 10px;
 	}
 
 	#content div#portfolio{
 		margin-left: 100px;
 		/* image columns CSS3 */
 		-webkit-column-count: 2;
-		-webkit-column-gap:   30px;
+		-webkit-column-gap:   10px;
 		-moz-column-count:    2;
-		-moz-column-gap:      30px;
+		-moz-column-gap:      10px;
 		column-count:         2;
-		column-gap:           30px;
+		column-gap:           10px;
 	}
 
 	/* hover */
@@ -729,10 +816,10 @@ p#loginregister{
 	#content form#searchbar{
 		margin-top: 100px;
 		bottom: auto;
-		width: 260px;
+		width: 285px;
 		padding-top: 10px;
 		padding-bottom: 10px;
-		left: 30px;
+		left: 10px;
 	}
 
 	#content form#searchbar input[type="submit"]{
@@ -762,36 +849,6 @@ p#loginregister{
 		float: left;
 		width: 50%;
 		height: 30px;
-	}
-
-	/* REGISTER FORM */
-
-	#content form#register{
-		width: 430px;
-	}
-
-	#content form#register fieldset:nth-child(odd){
-		float: left;
-		width: 200px;
-	}
-
-	#content form#register fieldset:nth-child(even){
-		float: right;
-		width: 200px;
-	}
-
-	#content form#register fieldset:nth-child(3){
-		clear: both;
-		width: 430px;
-		text-align: center;
-	}
-
-	p#loginregister{
-		clear: both;
-	}
-
-	#content form#register input[type="submit"]{
-		display: inline;
 	}
 
 	/* CART */
@@ -833,7 +890,7 @@ p#loginregister{
 
 	#content a.accountFunctions{
 		background-color: #fff;
-		color: #c8c8c8; /* color */
+		color: #a4a9ad;
 		font-size: 40px;
 		width: 40px;
 		height: 40px;
@@ -845,6 +902,20 @@ p#loginregister{
 	#content a.accountFunctions:hover{
 		background-color: #fff;
 		color: #B197A0; /* color */
+	}
+
+	#content div.button#orders{
+		margin-left: 30px;
+		position: absolute;
+		right: 0px;
+		margin-top: 50px;
+	}
+
+	/* ORDERS */
+
+	#content div#orderContainer{
+		width: 300px;
+		margin: auto;
 	}
 
 	/* ADMIN */
@@ -859,17 +930,36 @@ p#loginregister{
 
 /* -------------------------- DESKTOP -------------------------- */
 
-@media (min-width:800px){
+@media (min-width:1230px){
 
 	#container{
 		width: 800px;
 	}
 
+	#header div#logo{
+		margin: 40px auto 10px auto;
+		height: 200px;
+		width: 200px;
+		background-position: center center;
+		background-size: 400px 400px;
+		font-size: 0px;
+		border-bottom: 1px #a4a9ad solid;
+	}
+
+	#header{
+		margin-bottom: 30px;
+	}
+
 	/* HOME */
 
+	#content div#portfolio a img{
+		width: 340px;
+	}
+
 	#content form#searchbar{
-		margin-left: -50px;
+		margin-left: -200px;
 		left: auto;
+		top: 260px;
 	}
 
 	/* ADMIN */

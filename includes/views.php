@@ -40,9 +40,9 @@ class View{
 
 		$sHTML .= '<img src="assets/images/'.$oProject->image.'" id="detailsImg">
 			<div id="detailsContent">
-				<h2>'.$oProject->name.'</h2>
+				<h1>'.$oProject->name.'</h1>
 				<p>'.$oProject->desc.'</p>
-				<span class="icon">
+				<span class="icon projectDetailsIcons">
 					<a href="assets/images/'.$oProject->image.'">&#59157;</a>';
 		if($oProject->product){
 			if(isset($_SESSION['currentUser'])){
@@ -105,12 +105,17 @@ class View{
 
 	}
 
-	// INCOMPLETE
+	// function to calcuate grand total of cart
 	static public function grandTotal($oCart){
 		$iGrandTotal = 0;
+		$iShipping = 3.49;
+
 		foreach($oCart->contents as $key=>$value){
-			$iGrandTotal += ($oProduct->price)*$value;
+			$oProduct = new Project();
+			$oProduct->load($key);
+			$iGrandTotal += (($oProduct->price)*$value) + $iShipping;
 		}
+
 		return $iGrandTotal;
 	}
 
@@ -157,36 +162,43 @@ class View{
 		return $sHTML;
 	}
 
-	// INCOMPLETE
 	static public function renderOrders($aOrders){
 		$sHTML = '';
 
-		$sHTML .= '<h1>Your Orders</h1>';
+		$sHTML .= '<h1>Your Orders</h1><div id="orderContainer">';
+
+		if(count($aOrders) == 0){
+			$sHTML .= '<div id="orders">You have no orders.</div>';
+		}
 
 		for($iCountOrders=0;$iCountOrders<count($aOrders);$iCountOrders++){
 
 			$oCurrentOrder = $aOrders[$iCountOrders];
 
-			$sHTML .= '<div id="cart">Order Id:'.$oCurrentOrder->id.' Date:'.$oCurrentOrder->date;
+			$sHTML .= '<div id="orders">
+						<div class="orderHeader">
+							<span class="orderHeaderLeft">Order Id: #'.$oCurrentOrder->id.'</span>
+							<span class="orderHeaderRight">Date: '.$oCurrentOrder->date.'</span>
+							<div class="clear"></div>
+						</div>';
 
 			for($iCountOrderLines=0;$iCountOrderLines<count($oCurrentOrder->orderLines);$iCountOrderLines++){
 				$oCurrentOL = $oCurrentOrder->orderLines[$iCountOrderLines];
-				$sHTML .= '<div class="cartProduct">
-				<span class="productName">'.htmlentities($oCurrentOL->name).'</span>
+				$sHTML .= '<div class="orderLines">
+				'.htmlentities($oCurrentOL->name).'
 				</div>';
 			}
 
-			$sHTML .= number_format($oCurrentOrder->totalPrice,2).'</div>';
-
-			/*
-			foreach(as $key=>$value){
-				$sHTML .= '<span class="productName">'.htmlentities($oProduct->name).'</span>
-						<span class="productQty">'.$value.'</span>
-						<span class="productPrice"></span>';
-			}
-			*/
+			$sHTML .= '<div class="orderTotal">
+							<span class="orderHeaderLeft">Total</span>
+							<span class="orderHeaderRight">$'.number_format($oCurrentOrder->totalPrice,2).'</span>
+							<div class="clear"></div>
+						</div>
+					</div>';
 
 		}
+
+		$sHTML .= '</div>';
 
 		return $sHTML;
 	}
