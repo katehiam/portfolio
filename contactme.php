@@ -2,6 +2,7 @@
 require_once("includes/header.php");
 require_once("includes/form.php");
 require_once("includes/customer.php");
+require_once("includes/class.phpmailer.php");
 
 $oForm = new Form();
 
@@ -27,7 +28,20 @@ if(isset($_POST['submit'])){
 
 	if($oForm->valid == true){
 
-		// code to send email here
+		// code to send email
+
+		// Create a new PHPMailer instance
+		$mail = new PHPMailer();
+		//Set who the message is to be sent from
+		$mail->SetFrom($_POST['contactEmail'], $_POST['name'].', '.$_POST['company']);
+		//Set who the message is to be sent to
+		$mail->AddAddress('katehiam@gmail.com', 'Kate Hiam');
+		//Set the subject line
+		$mail->Subject = 'Message regarding web and graphic design';
+		//Read an HTML message body from an external file, convert referenced images to embedded, convert HTML into a basic plain-text alternative body
+		$mail->MsgHTML($_POST['message']);
+		//Send email
+		$mail->Send();
 
 		// redirect
 		header("Location:index.php");
