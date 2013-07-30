@@ -633,6 +633,7 @@ a:hover{
 #content div#postalAddress{
 	margin-top: 20px;
 	float: left;
+	width: 160px;
 }
 
 #content div.button#orders a{
